@@ -1,39 +1,10 @@
 # TrojanZoo
-![logo](https://github.com/ain-soph/trojanzoo/raw/master/docs/source/_static/img/trojanzoo-logo-readme.svg)
-
-[![contact](https://img.shields.io/badge/contact-rbp5354@psu.edu-yellow)](mailto:rbp5354@psu.edu)
-
-![python>=3.9](https://img.shields.io/badge/python->=3.9.2-informational.svg)
-[![License](https://img.shields.io/github/license/ain-soph/trojanzoo)](https://opensource.org/licenses/GPL-3.0)
-
-[![build](https://github.com/ain-soph/trojanzoo/workflows/build/badge.svg)](https://github.com/ain-soph/trojanzoo/actions?query=workflow%3Abuild)
-[![docs](https://github.com/ain-soph/trojanzoo/workflows/docs/badge.svg)](https://ain-soph.github.io/trojanzoo/)
-[![CodeQL](https://github.com/ain-soph/trojanzoo/workflows/CodeQL/badge.svg)](https://github.com/ain-soph/trojanzoo/actions?query=workflow%3ACodeQL)
-
-[![release](https://img.shields.io/github/v/release/ain-soph/trojanzoo)](https://github.com/ain-soph/trojanzoo/releases)
-[![pypi](https://img.shields.io/pypi/v/trojanzoo)](https://pypi.org/project/trojanzoo/)
-[![docker](https://img.shields.io/pypi/v/trojanzoo?label=docker)](https://hub.docker.com/r/local0state/trojanzoo)
-<!-- [![conda](https://img.shields.io/pypi/v/trojanzoo?label=conda)](https://anaconda.org/anaconda/trojanzoo) -->
 
 > **NOTE:** TrojanZoo requires `python>=3.9.2`, `pytorch>=1.8.1` and `torchvision>=0.9.1`, which must be installed manually. Recommend to use `conda` to install.
 
-This is the code implementation (pytorch) for our paper:  
-[TROJANZOO: Everything you ever wanted to know about neural backdoors (but were afraid to ask)](https://arxiv.org/abs/2012.09302)
+This is the code implementation (pytorch) for our paper.
 
 TrojanZoo provides a universal pytorch platform to conduct security researches (especially backdoor attacks/defenses) of image classification in deep learning. It is composed of two packages: `trojanzoo` and `trojanvision`. `trojanzoo` contains abstract classes and utilities, while `trojanvision` contains abstract and concrete ones for image classification task. 
-
-[Dataset List](https://github.com/ain-soph/trojanzoo/blob/master/trojanvision/datasets/__init__.py)  
-[Model List](https://github.com/ain-soph/trojanzoo/blob/master/trojanvision/models/__init__.py)  
-[Attack List](https://github.com/ain-soph/trojanzoo/blob/master/trojanvision/attacks/__init__.py)  
-[Defense List](https://github.com/ain-soph/trojanzoo/blob/master/trojanvision/defenses/__init__.py)
-
-> Note: This repository is also maintained to cover the implementation of  
-> our kdd 2020 paper [AdvMind: Inferring Adversary Intent of Black-Box Attacks](https://arxiv.org/abs/2006.09539)  
-> and ccs 2020 paper [A Tale of Evil Twins: Adversarial Inputs versus Poisoned Models](https://arxiv.org/abs/1911.01559).
-
-## Screenshot
-![screenshot](https://github.com/ain-soph/trojanzoo/raw/master/docs/source/_static/img/screenshot.png)
-
 
 ## Features
 1. **Colorful and verbose output!**
@@ -55,13 +26,12 @@ TrojanZoo provides a universal pytorch platform to conduct security researches (
 ## Installation
 1. `pip install trojanzoo`  
 2. **(todo)** `conda install trojanzoo`  
-3. `docker pull local0state/trojanzoo`  
-4. **(RECOMMEND)**`python setup.py develop`  
+3. **(RECOMMEND)**`python setup.py develop`  
     > This could install the github repo package but avoid copying files to `site_packages`, so that during developing `TrojanZoo`, you don't need move `example` files to the root directory of repo.  
 
 ## Quick Start
 
-You can use the provided [example](https://github.com/ain-soph/trojanzoo/tree/master/examples) scripts to reproduce the evaluation results in our paper.  
+You can use the provided example scripts to reproduce the evaluation results in our paper.  
 > Note: The program won't save results without `--save`  
 1. Train a model:  
     e.g. `ResNet18` on `CIFAR10` with 95% Acc
@@ -80,16 +50,6 @@ You can use the provided [example](https://github.com/ain-soph/trojanzoo/tree/ma
     ```python3
     python ./examples/backdoor_defense.py --color --verbose 1 --pretrain --validate_interval 1 --dataset cifar10 --model resnet18_comp --attack badnet --defense neural_cleanse --random_init --epoch 50 --lr 0.01
     ```
-## IMC
-```python3
-python ./examples/backdoor_attack.py --color --verbose 1 --pretrain --validate_interval 1 --dataset cifar10 --model resnet18_comp --attack imc --random_init --epoch 50 --lr 0.01 --save
-```
-
-## AdvMind
-(with `attack adaptive` and `model adaptive`)
-```python3
-python ./examples/adv_defense.py --color --verbose 1 --pretrain --validate_interval 1 --dataset cifar10 --model resnet18_comp --attack pgd --defense advmind --attack_adapt --defense_adapt
-```
 ## Detailed Usage
 ### Configuration file structure
 All arguments in the parser are able to set default values in configuration files.  
@@ -138,12 +98,3 @@ Modify them in corresponding config files and command-line arguments.
 
 ## License
 TrojanZoo has a GPL-style license, as found in the [LICENSE](https://github.com/ain-soph/trojanzoo/blob/master/LICENSE) file.
-## Cite our paper
-```
-@InProceedings{pang2020trojanzoo,
-      title={TROJANZOO: Everything you ever wanted to know about neural backdoors (but were afraid to ask)}, 
-      author={Ren Pang and Zheng Zhang and Xiangshan Gao and Zhaohan Xi and Shouling Ji and Peng Cheng and Ting Wang},
-      year={2020},
-      booktitle={arXiv Preprint},
-}
-```

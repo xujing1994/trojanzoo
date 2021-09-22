@@ -21,7 +21,6 @@ if TYPE_CHECKING:
 
 class CleanLabel(BadNet):
     r"""
-    Contributor: Xiangshan Gao, Ren Pang
 
     Clean Label Backdoor Attack is described in detail in the paper `Clean Label Backdoor Attack`_ by Alexander Turner.
 
